@@ -7,6 +7,7 @@ TagManager:
   - Limb
   - Head
   - Torso
+  - Objective
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - vlight
+  - Objective
   - 
   - 
   - 
