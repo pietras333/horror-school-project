@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ObjectivePickupSystem : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class ObjectivePickupSystem : MonoBehaviour
     [SerializeField] AudioSource pickupSound;
     [SerializeField] TextMeshProUGUI objectivesText;
     [HideInInspector] GameObject lastFoundObjective;
+
 
     void Start(){
         for(int i = 0; i < pickupObjectives.Count; i++){
@@ -54,5 +56,9 @@ public class ObjectivePickupSystem : MonoBehaviour
                 }
             }
         }
+        
+        if(pickupObjectives.Count == 0){
+            SceneManager.LoadScene("End", LoadSceneMode.Single);
+        }
     }
-    }
+}
