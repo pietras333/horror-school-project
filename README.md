@@ -10,6 +10,9 @@
 
 ###
 
+![GameSnapshot](https://github.com/pietras333/IT-GAME-PROJECT/assets/83142069/561499c9-a71c-48ac-be40-b7d55f86972f)
+
+###
 <div align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" height="40" alt="csharp logo"  />
   <img width="12" />
