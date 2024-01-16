@@ -8,6 +8,7 @@ TagManager:
   - Head
   - Torso
   - Objective
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Ground
   - Objective
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 

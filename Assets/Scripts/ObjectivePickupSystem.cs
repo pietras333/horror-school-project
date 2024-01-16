@@ -10,6 +10,7 @@ public class ObjectivePickupSystem : MonoBehaviour
     [Space]
     [Header("Necessary")]
     [Space]
+    [SerializeField] string enemyTag;
     [SerializeField] List<PickupObjective> pickupObjectives = new List<PickupObjective>();
     [SerializeField] string objectiveTag;
     
@@ -59,6 +60,13 @@ public class ObjectivePickupSystem : MonoBehaviour
         
         if(pickupObjectives.Count == 0){
             SceneManager.LoadScene("End", LoadSceneMode.Single);
+        }
+    }
+
+    public void OnCollisionEnter(Collision collider){
+        if(collider.gameObject.tag == enemyTag){
+            SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+            print("TOUCHED");
         }
     }
 }

@@ -16,21 +16,30 @@ public class BrainAI : MonoBehaviour
     public float walkPointRange;
 
     //States
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public float sightRange;
+    public bool playerInSightRange;
+    [SerializeField] AudioSource monsterChase;
+
+    [HideInInspector] float baseSpeed;
+
+    private void Start(){
+        baseSpeed = agent.speed;
+    }
 
     private void Update()
     {
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (!playerInSightRange) Patroling();
+        if(playerInSightRange) ChasePlayer();
     }
 
     private void Patroling()
     {
+        agent.speed = baseSpeed;
+        monsterChase.transform.gameObject.SetActive(false);
+
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
@@ -56,13 +65,13 @@ public class BrainAI : MonoBehaviour
 
     private void ChasePlayer()
     {
+        monsterChase.transform.gameObject.SetActive(true);
         agent.SetDestination(player.position);
+        agent.speed = baseSpeed * 1.15f;
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
